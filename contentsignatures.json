@@ -175,6 +175,11 @@
           "MatchOn": "[a-zA-Z0-9._-]*zoom.us/(?:j|my)/[a-zA-Z0-9.?=]+",
           "Description": "Zoom Meeting Link",
           "Comment": ""
+      },
+      {
+          "MatchOn": "ClearTextPassword",
+          "Description": "Nuget config credential",
+          "Comment": ""
       }
   ]
 }

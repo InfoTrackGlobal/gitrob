@@ -88,7 +88,8 @@ func GetRepositoryHistory(repository *git.Repository) ([]*object.Commit, error) 
 func GetChanges(commit *object.Commit, repo *git.Repository) (object.Changes, error) {
 	parentCommit, err := getParentCommit(commit, repo)
 	if err != nil {
-		return nil, err
+		//return nil, err
+		parentCommit = commit
 	}
 
 	commitTree, err := commit.Tree()
@@ -101,7 +102,14 @@ func GetChanges(commit *object.Commit, repo *git.Repository) (object.Changes, er
 		return nil, err
 	}
 
-	changes, err := object.DiffTree(parentCommitTree, commitTree)
+	//changes, err := object.DiffTree(parentCommitTree, commitTree)
+	var changes object.Changes
+	if parentCommit == commit {
+	  changes, err = object.DiffTree(nil, parentCommitTree)
+	} else {
+	  changes, err = object.DiffTree(parentCommitTree, commitTree)
+	}
+	
 	if err != nil {
 		return nil, err
 	}

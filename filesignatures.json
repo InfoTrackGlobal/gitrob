@@ -617,6 +617,12 @@
       "MatchOn": "^\\.?git-credentials$",
       "Description": "git-credential-store helper credentials file",
       "Comment": ""
+    },
+    {
+      "Part": "filename",
+      "MatchOn": "[N|n]uget\\.config$",
+      "Description": "Nuget configuration file",
+      "Comment": "Possibly contains private addresses or credentials"
     }
   ]
 }
